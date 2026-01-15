@@ -26,12 +26,15 @@ jobs:
       - name: Fetch iPlug2 dependencies
         shell: pwsh
         run: |
+          $ErrorActionPreference = "Stop"
           $dirs = @('Dependencies','IGraphics','IPlug','Scripts')
           foreach ($d in $dirs) {
             if (Test-Path $d) { Remove-Item $d -Recurse -Force }
             robocopy "iPlug2-src\$d" $d /MIR | Out-Null
-            if ($LASTEXITCODE -ge 8) { Write-Error "robocopy failed for $d with code $LASTEXITCODE" }
+            $code = $LASTEXITCODE
+            if ($code -gt 7) { throw "robocopy failed for $d with code $code" }
           }
+          exit 0
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
