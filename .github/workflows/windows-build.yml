@@ -16,6 +16,17 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Fetch iPlug2 dependencies
+        shell: pwsh
+        run: |
+          git clone --depth 1 https://github.com/iPlug2/iPlug2.git iPlug2-src
+          $dirs = @('Dependencies','IGraphics','IPlug','Scripts')
+          foreach ($d in $dirs) {
+            if (Test-Path $d) { Remove-Item $d -Recurse -Force }
+            robocopy "iPlug2-src\$d" $d /MIR | Out-Null
+            if ($LASTEXITCODE -ge 8) { Write-Error "robocopy failed for $d with code $LASTEXITCODE" }
+          }
+
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
