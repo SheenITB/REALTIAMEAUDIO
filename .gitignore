@@ -1,0 +1,55 @@
+# Node / frontend
+node_modules/
+dist/
+.vite/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS
+.DS_Store
+
+# Editors / IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.ncb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# Build artifacts (CMake/VS/xcodebuild)
+build/
+build-mac/
+**/build/
+**/build-*/
+**/.vs/
+**/x64/
+**/Debug*/
+**/Release*/
+**/ipch/
+*.obj
+*.pch
+*.ilk
+*.pdb
+*.tlog
+*.cache
+
+# Binary outputs
+*.exe
+*.dll
+*.lib
+*.exp
+*.app
+*.pkg
+*.zip
+
+# Plugin bundles
+*.vst3
+*.component
+*.aaxplugin
+
+# Misc
+Thumbs.db

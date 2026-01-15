@@ -1,0 +1,41 @@
+name: windows-vst3-build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build solution (Release x64)
+        run: msbuild RealTimeAudio/RealTimeAudio.sln /p:Configuration=Release /p:Platform=x64 /m
+
+      - name: Collect VST3 artifact
+        shell: pwsh
+        run: |
+          $out = "artifacts"
+          New-Item -ItemType Directory -Path $out -Force | Out-Null
+          $vst3 = Get-ChildItem -Recurse -Filter *.vst3
+          if (-not $vst3) { Write-Error "No .vst3 output found" }
+          foreach ($item in $vst3) {
+            $dest = Join-Path $out $item.Name
+            Copy-Item $item.FullName -Destination $dest -Recurse -Force
+          }
+
+      - name: Upload VST3 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vst3-windows
+          path: artifacts
