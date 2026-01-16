@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Prepare resources
+      run: |
+        cd RealTimeAudio/scripts
+        python prepare_resources-win.py
+    - name: Build VST
+      run: |
+        cd RealTimeAudio
+        msbuild RealTimeAudio.sln /p:Configuration=Release /p:Platform=x64
