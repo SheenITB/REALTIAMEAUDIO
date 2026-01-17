@@ -27,10 +27,13 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
+          # Copy iPlug2 directories to RealTimeAudio folder where projects expect them
+          $targetBase = "RealTimeAudio"
           $dirs = @('Dependencies','IGraphics','IPlug','Scripts')
           foreach ($d in $dirs) {
-            if (Test-Path $d) { Remove-Item $d -Recurse -Force }
-            robocopy "iPlug2-src\$d" $d /MIR | Out-Null
+            $target = Join-Path $targetBase $d
+            if (Test-Path $target) { Remove-Item $target -Recurse -Force }
+            robocopy "iPlug2-src\$d" $target /MIR | Out-Null
             $code = $LASTEXITCODE
             if ($code -gt 7) { throw "robocopy failed for $d with code $code" }
           }
@@ -47,7 +50,7 @@ jobs:
 
       - name: Build solution (Release x64)
         shell: pwsh
-        run: msbuild RealTimeAudio/RealTimeAudio.sln /p:Configuration=Release /p:Platform=x64 /p:IPLUG2_ROOT="$env:GITHUB_WORKSPACE\iPlug2-src" /m
+        run: msbuild RealTimeAudio/RealTimeAudio.sln /p:Configuration=Release /p:Platform=x64 /m
 
       - name: Collect VST3 artifact
         shell: pwsh
