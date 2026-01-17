@@ -51,7 +51,7 @@ jobs:
     - name: Build VST
       run: |
         cd RealTimeAudio
-        & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" RealTimeAudio.sln /p:Configuration=Release /p:Platform=x64
+        & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" projects\RealTimeAudio-vst3.vcxproj /p:Configuration=Release /p:Platform=x64
     - name: Install Inno Setup
       run: |
         Invoke-WebRequest -Uri "https://jrsoftware.org/download.php/is.exe" -OutFile "$env:TEMP\innosetup.exe"
