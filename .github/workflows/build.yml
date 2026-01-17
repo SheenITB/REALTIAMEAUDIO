@@ -38,13 +38,6 @@ jobs:
       run: |
         cd RealTimeAudio
         git clone https://github.com/iPlug2/iPlug2.git
-    - name: Download VST3 SDK
-      run: |
-        cd RealTimeAudio
-        git clone https://github.com/steinbergmedia/vst3sdk.git vst3sdk
-        Rename-Item -Path "vst3sdk" -NewName "VST3_SDK"
-        Remove-Item -Recurse -Force "iPlug2/Dependencies/IPlug/VST3_SDK" -ErrorAction SilentlyContinue
-        Move-Item -Path "VST3_SDK" -Destination "iPlug2/Dependencies/IPlug/"
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
