@@ -35,7 +35,19 @@ jobs:
         name: web-build
         path: RealTimeAudio/resources/web/
     - name: Clone IPlug2
-      run: git clone https://github.com/iPlug2/iPlug2.git iPlug2 --depth 1
+      run: |
+        cd RealTimeAudio
+        git clone https://github.com/iPlug2/iPlug2.git
+    - name: Download VST3 SDK
+      run: |
+        cd RealTimeAudio
+        Invoke-WebRequest -Uri "https://download.steinberg.net/sdk_downloads/vst-sdk_3.7.7_build-19_2021-12-06.zip" -OutFile "vst3_sdk.zip"
+        Expand-Archive -Path "vst3_sdk.zip" -DestinationPath "."
+        if (Test-Path "VST_SDK/VST3_SDK") {
+          Move-Item -Path "VST_SDK/VST3_SDK" -Destination "iPlug2/Dependencies/IPlug/VST3_SDK"
+        } else {
+          Write-Host "VST3_SDK not found in archive"
+        }
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
@@ -48,10 +60,10 @@ jobs:
       run: |
         cd RealTimeAudio
         nuget restore RealTimeAudio.sln
-    - name: Build VST
+    - name: Build VST3
       run: |
         cd RealTimeAudio
-        & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" projects\RealTimeAudio-vst2.vcxproj /p:Configuration=Release /p:Platform=x64 /p:SolutionDir="$PWD\"
+        & "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" projects\RealTimeAudio-vst3.vcxproj /p:Configuration=Release /p:Platform=x64 /p:SolutionDir="$PWD\"
     - name: Install Inno Setup
       run: |
         Invoke-WebRequest -Uri "https://jrsoftware.org/download.php/is.exe" -OutFile "$env:TEMP\innosetup.exe"
