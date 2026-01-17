@@ -156,7 +156,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\VST3_SDK\base\win\$(Platform)\$(Configuration)\;$(WDL_PATH)\IPlug\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;$(WDL_PATH)\lice\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(WDL_PATH)\IPlug\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;$(WDL_PATH)\lice\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -190,7 +190,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\VST3_SDK\base\win\$(Platform)\$(Configuration)\;$(WDL_PATH)\IPlug\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;$(WDL_PATH)\lice\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(WDL_PATH)\IPlug\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;$(WDL_PATH)\lice\$(SolutionDir)build-win\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -245,37 +245,13 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(x64_LIB_PATHS);$(WDL_PATH)\lice\$(SolutionDir)build-win\$(Platform)\Release\;..\..\VST3_SDK\base\win\$(Platform)\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(x64_LIB_PATHS);$(WDL_PATH)\lice\$(SolutionDir)build-win\$(Platform)\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="../config.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\classfactoryhelpers.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fbuffer.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fcleanup.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fcommandline.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fdebug.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fdynlib.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fobject.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fstdmethods.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fstreamer.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fstring.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\hexbinary.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\timer.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\updatehandler.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\pluginterfaces\base\conststringtable.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\pluginterfaces\base\funknown.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\pluginterfaces\base\ustring.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\common\memorystream.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\common\pluginview.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstaudioeffect.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstbus.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstcomponent.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstcomponentbase.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstparameters.h" />
-    <ClInclude Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\Extras\WebView\IPlugWebView.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\Extras\WebView\IPlugWebViewEditorDelegate.h" />
     <ClInclude Include="..\..\iPlug2\IPlug\IPlugAPIBase.h" />
@@ -304,34 +280,7 @@
     <ClInclude Include="..\resources\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\baseiids.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fbuffer.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fdebug.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fdynlib.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fobject.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fstreamer.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\fstring.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\timer.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\source\updatehandler.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\thread\source\fcondition.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\base\thread\source\flock.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\pluginterfaces\base\conststringtable.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\pluginterfaces\base\coreiids.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\pluginterfaces\base\funknown.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\pluginterfaces\base\ustring.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\common\memorystream.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\common\pluginview.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\common\commoniids.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\main\dllmain.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\main\pluginfactory.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstaudioeffect.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstbus.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstcomponent.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstcomponentbase.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstinitiids.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstparameters.cpp" />
-    <ClCompile Include="..\..\iPlug2\Dependencies\IPlug\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.cpp" />
-    <ClCompile Include="..\..\..\IPlug\Extras\WebView\IPlugWebView.cpp">
+    <ClCompile Include="..\..\iPlug2\IPlug\Extras\WebView\IPlugWebView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Tracer|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
