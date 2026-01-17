@@ -21,6 +21,8 @@ public:
   void OnReset() override;
   void OnParamChange(int paramIdx) override;
 
+  IGraphics* GetUI() override { return GetGraphics(); }
+
 private:
   void SendAudioToWebView(sample** inputs, int nFrames);
 
