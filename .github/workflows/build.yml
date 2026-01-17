@@ -26,6 +26,7 @@ jobs:
 
   build-windows:
     runs-on: windows-latest
+    needs: build-web
 
     steps:
     - uses: actions/checkout@v4
