@@ -38,6 +38,10 @@ jobs:
       run: |
         cd RealTimeAudio
         git clone https://github.com/iPlug2/iPlug2.git
+    - name: Init iPlug2 submodules
+      run: |
+        cd RealTimeAudio/iPlug2
+        git submodule update --init --recursive
         cd iPlug2
         git submodule update --init --recursive
     - name: Setup Python
