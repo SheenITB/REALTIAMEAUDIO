@@ -37,3 +37,11 @@ jobs:
       run: |
         cd RealTimeAudio
         msbuild RealTimeAudio.sln /p:Configuration=Release /p:Platform=x64
+    - name: Install Inno Setup
+      run: |
+        Invoke-WebRequest -Uri "https://jrsoftware.org/download.php/is.exe" -OutFile "$env:TEMP\innosetup.exe"
+        Start-Process -FilePath "$env:TEMP\innosetup.exe" -ArgumentList "/SILENT" -Wait
+    - name: Package installer
+      run: |
+        cd RealTimeAudio
+        .\package_win.ps1
