@@ -41,13 +41,8 @@ jobs:
     - name: Download VST3 SDK
       run: |
         cd RealTimeAudio
-        Invoke-WebRequest -Uri "https://download.steinberg.net/sdk_downloads/vst-sdk_3.7.7_build-19_2021-12-06.zip" -OutFile "vst3_sdk.zip"
-        Expand-Archive -Path "vst3_sdk.zip" -DestinationPath "."
-        if (Test-Path "VST_SDK/VST3_SDK") {
-          Move-Item -Path "VST_SDK/VST3_SDK" -Destination "iPlug2/Dependencies/IPlug/VST3_SDK"
-        } else {
-          Write-Host "VST3_SDK not found in archive"
-        }
+        git clone https://github.com/steinbergmedia/vst3sdk.git vst3sdk
+        Move-Item -Path "vst3sdk/VST3_SDK" -Destination "iPlug2/Dependencies/IPlug/VST3_SDK"
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
