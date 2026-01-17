@@ -9,6 +9,8 @@
 #define PLUG_COPYRIGHT_STR "Copyright 2026 ITB"
 #define PLUG_CLASS_NAME RealTimeAudio
 
+#define VST3_API
+
 #define BUNDLE_NAME "RealTimeAudio"
 #define BUNDLE_MFR "ITB"
 #define BUNDLE_DOMAIN "com"
