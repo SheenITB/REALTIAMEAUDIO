@@ -35,7 +35,7 @@ jobs:
         name: web-build
         path: RealTimeAudio/resources/web/
     - name: Clone IPlug2
-      run: git clone https://github.com/iPlug2/iPlug2.git Dependencies/IPlug --depth 1
+      run: git clone https://github.com/iPlug2/iPlug2.git iPlug2 --depth 1
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
