@@ -37,7 +37,7 @@ jobs:
     - name: Clone IPlug2
       run: |
         cd RealTimeAudio
-        git clone https://github.com/iPlug2/iPlug2.git
+        git clone --recurse-submodules https://github.com/iPlug2/iPlug2.git
     - name: Init iPlug2 submodules
       run: |
         cd RealTimeAudio/iPlug2
