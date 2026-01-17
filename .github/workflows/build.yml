@@ -44,6 +44,10 @@ jobs:
       run: |
         cd RealTimeAudio/scripts
         python prepare_resources-win.py
+    - name: Restore NuGet packages
+      run: |
+        cd RealTimeAudio
+        nuget restore RealTimeAudio.sln
     - name: Build VST
       run: |
         cd RealTimeAudio
