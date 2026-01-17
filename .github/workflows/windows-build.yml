@@ -39,6 +39,12 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
+      - name: Install NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: NuGet Restore
+        run: nuget restore RealTimeAudio/RealTimeAudio.sln
+
       - name: Build solution (Release x64)
         shell: pwsh
         run: msbuild RealTimeAudio/RealTimeAudio.sln /p:Configuration=Release /p:Platform=x64 /p:IPLUG2_ROOT="$env:GITHUB_WORKSPACE\iPlug2-src" /m
