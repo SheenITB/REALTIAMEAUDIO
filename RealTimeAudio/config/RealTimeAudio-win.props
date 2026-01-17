@@ -11,6 +11,9 @@
     <BUILD_DIR>$(SolutionDir)build-win</BUILD_DIR>
     <CREATE_BUNDLE_SCRIPT>$(IPLUG2_ROOT)\Scripts\create_bundle.bat</CREATE_BUNDLE_SCRIPT>
     <EXTRA_INC_PATHS>$(IPLUG2_ROOT)\Dependencies\Extras\json11;$(IPLUG2_ROOT)\Dependencies\IPlug\VST2_SDK;$(IPLUG2_ROOT)\Dependencies\IPlug\VST3_SDK</EXTRA_INC_PATHS>
+    <IPLUG_INC_PATHS>$(IPLUG2_ROOT)\IPlug;$(IPLUG2_ROOT)\WDL</IPLUG_INC_PATHS>
+    <IGRAPHICS_INC_PATHS>$(IPLUG2_ROOT)\IGraphics;$(IPLUG2_ROOT)\IGraphics\Controls;$(IPLUG2_ROOT)\IGraphics\Drawing;$(IPLUG2_ROOT)\IGraphics\Platforms;$(IPLUG2_ROOT)\IGraphics\Extras;$(IPLUG2_ROOT)\Dependencies\IGraphics\NanoSVG\src;$(IPLUG2_ROOT)\Dependencies\IGraphics\NanoVG\src;$(IPLUG2_ROOT)\WDL\libpng;$(IPLUG2_ROOT)\WDL\zlib;$(IPLUG2_ROOT)\Dependencies\Build\src\freetype\include;$(IPLUG2_ROOT)\Dependencies\IGraphics\STB;$(IPLUG2_ROOT)\Dependencies\Build\src\skia;$(IPLUG2_ROOT)\Dependencies\Build\src\skia\include\core;$(IPLUG2_ROOT)\Dependencies\Build\src\skia\include\effects;$(IPLUG2_ROOT)\Dependencies\Build\src\skia\include\config;$(IPLUG2_ROOT)\Dependencies\Build\src\skia\include\utils;$(IPLUG2_ROOT)\Dependencies\Build\src\skia\include\gpu;$(IPLUG2_ROOT)\Dependencies\Build\src\skia\modules\svg\include;$(IPLUG2_ROOT)\Dependencies\Build\src\skia\third_party\externals\icu\source\common;$(IPLUG2_ROOT)\Dependencies\IGraphics\yoga;$(IPLUG2_ROOT)\Dependencies\IGraphics\yoga\yoga</IGRAPHICS_INC_PATHS>
+    <GLAD_GL2_PATHS>$(IPLUG2_ROOT)\Dependencies\IGraphics\glad_GL2\include;$(IPLUG2_ROOT)\Dependencies\IGraphics\glad_GL2\src</GLAD_GL2_PATHS>
     <VST2_INC_PATHS>$(IPLUG2_ROOT)\Dependencies\IPlug\VST2_SDK</VST2_INC_PATHS>
     <VST3_INC_PATHS>$(IPLUG2_ROOT)\Dependencies\IPlug\VST3_SDK</VST3_INC_PATHS>
   </PropertyGroup>
@@ -62,6 +65,15 @@
     </BuildMacro>
     <BuildMacro Include="EXTRA_INC_PATHS">
       <Value>$(EXTRA_INC_PATHS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IPLUG_INC_PATHS">
+      <Value>$(IPLUG_INC_PATHS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="IGRAPHICS_INC_PATHS">
+      <Value>$(IGRAPHICS_INC_PATHS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLAD_GL2_PATHS">
+      <Value>$(GLAD_GL2_PATHS)</Value>
     </BuildMacro>
     <BuildMacro Include="VST2_INC_PATHS">
       <Value>$(VST2_INC_PATHS)</Value>
